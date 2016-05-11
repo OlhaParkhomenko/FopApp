@@ -15,7 +15,8 @@ namespace :data do
         cat_code, cat_name = cat.split(' ', 2)
         category = Category.find_or_create_by(code: cat_code, name: cat_name)
                 
-        person.status = status   
+        person.status = status
+        person.save  
         
       end
     end
