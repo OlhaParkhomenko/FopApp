@@ -12,20 +12,25 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.fullname %></td>
-        <td><%= person.address %></td>
-        <td><%= person.status %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <tbody>, 
+    <% will_paginate @people, :previous_label => t("previous"), :next_label => t("next") %>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.fullname %></td>
+          <td><%= person.address %></td>
+          <td><%= person.status %></td>
+          <td><%= link_to 'Show', person %></td>
+          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
 </table>
 
 <br>
+
+
+<!--<%= button_to 'Previous' %>
+<%= button_to 'Next' %>-->
 
 <%= link_to 'New Person', new_person_path %>
