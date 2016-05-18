@@ -7,9 +7,13 @@ namespace :data do
     File.open("data/fop_test.csv") do |f|
       f.each_line do |line|
 
-        id, fio, addr, cat, status = line.split(";").map {|w| w.gsub('"', '').strip}    
+        id, fio, addr, cat, status = line.split(";").map {|w| w.gsub('"', '').strip}
+        fio_surname, fio_name, fio_middle_name = fio.split(' ')    
+        
         person = Person.new
-        person.fullname = fio
+        person.surname = fio_surname
+        person.name = fio_name
+        person.middle_name = fio_middle_name
         person.address = addr
              
         cat_code, cat_name = cat.split(' ', 2)

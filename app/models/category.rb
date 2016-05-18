@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  belongs_to :people
+  has_many :people
 end
