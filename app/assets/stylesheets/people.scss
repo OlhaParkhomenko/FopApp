@@ -3,9 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 td, th {
-  border: 1px green dotted;
+  border: 1px green solid;
 }
 
-body {
-  background-color: #DF73FF;
+th {
+  background-color: #E6E6FA;
+}
+
+
+.left {
+  float: left;
+  margin-right: 10px;
+}
+
+.right {
+  clear: right;
 }

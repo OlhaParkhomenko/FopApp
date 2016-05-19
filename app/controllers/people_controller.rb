@@ -7,6 +7,10 @@ class PeopleController < ApplicationController
     @people = Person.paginate(:page => params[:page], :per_page => 15)
   end
 
+  def search
+    @people = Person.where(surname: params[:q]).paginate(:page => params[:page], :per_page => 15)
+  end
+
   # GET /people/1
   # GET /people/1.json
   def show

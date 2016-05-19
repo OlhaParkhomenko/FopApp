@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #FFFDDF;
+}
+
+table {
+  width: 100%;
+}
