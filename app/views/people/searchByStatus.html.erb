@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>People Found</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Surname</th>
+      <th>Name</th>
+      <th>Middle name</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody> 
+    <%= will_paginate(@people) %>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.surname %></td>
+          <td><%= person.name %></td>
+          <td><%= person.middle_name %></td>
+          <td><%= person.address %></td>
+          <td><%= person.status %></td>
+          <td><%= link_to 'Show', person %></td>
+          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person', new_person_path %>

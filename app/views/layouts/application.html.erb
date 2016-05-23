@@ -12,11 +12,22 @@
     <%= link_to image_tag("r5.png", border: 0, width: 40), root_path %>
   </header>
 
-  <div style="width: 100%">
-    <%= "Find by surname" %>
-    <form method="GET" action="<%= search_people_path %>">
-    <input type="text" name="q" value="<%= params[:q] ? params[:q] : '' %>" />  
-  </div>
+  <ul>
+    <li><%= "Search" %>
+      <ul>
+        <li> <%= "Search by surname" %>
+          <form method="GET" action="<%= searchByFio_people_path %>">
+          <input type="text" name="q" value="<%= params[:q] ? params[:q] : '' %>" />  
+        </li>
+        <li> <%= "Search by status" %>
+          <form method="GET" action="<%= searchByStatus_people_path %>">
+          <input type="text" name="q" value="<%= params[:q] ? params[:q] : '' %>" />
+        </li>
+        <li> <%= "Search by region" %>
+        </li>
+      </ul>  
+    <li><%= "Graph" %></li>
+  </ul>
 
 <%= yield %>
 

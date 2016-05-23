@@ -7,8 +7,12 @@ class PeopleController < ApplicationController
     @people = Person.paginate(:page => params[:page], :per_page => 15)
   end
 
-  def search
+  def searchByFio
     @people = Person.where(surname: params[:q]).paginate(:page => params[:page], :per_page => 15)
+  end
+
+  def searchByStatus
+    @people = Person.where(status: params[:q]).paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /people/1

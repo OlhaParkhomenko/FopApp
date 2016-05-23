@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
  resources :people do
     collection do
-      get 'search'
+      get 'searchByFio'
+      get 'searchByStatus'
     end
   end 
 
