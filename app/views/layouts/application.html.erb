@@ -3,7 +3,7 @@
 <head>
   <title>FopApplication</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://www.google.com/jsapi', 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
@@ -12,25 +12,21 @@
     <%= link_to image_tag("r5.png", border: 0, width: 40), root_path %>
   </header>
 
-  <ul>
-    <li><%= "Search" %>
-      <ul>
-        <li> <%= "Search by surname" %>
-          <form method="GET" action="<%= searchByFio_people_path %>">
-          <input type="text" name="q" value="<%= params[:q] ? params[:q] : '' %>" />  
-        </li>
-        <li> <%= "Search by status" %>
-          <form method="GET" action="<%= searchByStatus_people_path %>">
-          <input type="text" name="q" value="<%= params[:q] ? params[:q] : '' %>" />
-        </li>
-        <li> <%= "Search by region" %>
-        </li>
-      </ul>  
-    <li><%= "Graph" %></li>
-  </ul>
+  <strong><%= "Search" %></strong>
+  <form method="GET" action="<%= search_people_path %>">
+    <label for="surname">Surname</label><br>
+    <input type="text" id="surname" name="surname" value="<%= params[:surname] ? params[:surname] : '' %>" /><br>
+    <label for="status">Status</label><br>
+    <input type="text" id="status" name="status" value="<%= params[:status] ? params[:status] : '' %>" /><br>
+    <label for="region">Region</label><br>
+    <input type="text" id="region" name="region" value="<%= params[:region] ? params[:region] : '' %>" /><br>
+    <button type="submit">Search</button>
 
+  
 <%= yield %>
 
+<%= pie_chart Goal.group(:region).count %>
+   
 </body>
 
 </html>

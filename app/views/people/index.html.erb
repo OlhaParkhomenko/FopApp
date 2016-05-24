@@ -8,6 +8,8 @@
       <th>Surname</th>
       <th>Name</th>
       <th>Middle name</th>
+      <th>Index</th>
+      <th>Region</th>
       <th>Address</th>
       <th>Status</th>
       <th colspan="5"></th>
@@ -21,7 +23,9 @@
           <td><%= person.surname %></td>
           <td><%= person.name %></td>
           <td><%= person.middle_name %></td>
-          <td><%= person.address %></td>
+          <td><%= person.index %></td>
+          <td><%= person.region %></td>
+          <td><%= person.reduce_address %></td>
           <td><%= person.status %></td>
           <td><%= link_to 'Show', person %></td>
           <td><%= link_to 'Edit', edit_person_path(person) %></td>
@@ -32,5 +36,6 @@
 </table>
 
 <br>
+
 
 <%= link_to 'New Person', new_person_path %>

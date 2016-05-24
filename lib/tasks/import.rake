@@ -8,13 +8,16 @@ namespace :data do
       f.each_line do |line|
 
         id, fio, addr, cat, status = line.split(";").map {|w| w.gsub('"', '').strip}
-        fio_surname, fio_name, fio_middle_name = fio.split(' ')    
+        fio_surname, fio_name, fio_middle_name = fio.split(' ')
+        addr_index, addr_region, addr_full = addr.split(',', 3)    
         
         person = Person.new
         person.surname = fio_surname
         person.name = fio_name
         person.middle_name = fio_middle_name
-        person.address = addr
+        person.index = addr_index
+        person.region = addr_region
+        person.reduce_address = addr_full
              
         cat_code, cat_name = cat.split(' ', 2)
         category = Category.find_or_create_by(code: cat_code, name: cat_name)

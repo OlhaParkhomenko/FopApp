@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'will_paginate'
 
+gem 'chartkick'
+
 group :assets do
   # Use SCSS for stylesheets
   gem 'sass-rails', '~> 5.0'

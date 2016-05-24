@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518100119) do
+ActiveRecord::Schema.define(version: 20160523110126) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "code"
@@ -24,17 +24,23 @@ ActiveRecord::Schema.define(version: 20160518100119) do
     t.string   "fullname"
     t.string   "address"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "category_id"
     t.string   "surname"
     t.string   "name"
     t.string   "middle_name"
+    t.string   "index"
+    t.string   "region"
+    t.string   "reduce_address"
   end
 
   add_index "people", ["category_id"], name: "index_people_on_category_id"
+  add_index "people", ["index"], name: "index_people_on_index"
   add_index "people", ["middle_name"], name: "index_people_on_middle_name"
   add_index "people", ["name"], name: "index_people_on_name"
+  add_index "people", ["reduce_address"], name: "index_people_on_reduce_address"
+  add_index "people", ["region"], name: "index_people_on_region"
   add_index "people", ["surname"], name: "index_people_on_surname"
 
 end

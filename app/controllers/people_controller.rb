@@ -7,12 +7,12 @@ class PeopleController < ApplicationController
     @people = Person.paginate(:page => params[:page], :per_page => 15)
   end
 
-  def searchByFio
-    @people = Person.where(surname: params[:q]).paginate(:page => params[:page], :per_page => 15)
-  end
-
-  def searchByStatus
-    @people = Person.where(status: params[:q]).paginate(:page => params[:page], :per_page => 15)
+  def search
+    search_terms={}
+    search_terms[:surname] = params[:surname] if params[:surname]
+    search_terms[:status] = params[:status] if params[:status]
+    search_terms[:region] = params[:region] if params[:region]
+    @people = Person.where(search_terms).paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /people/1
@@ -77,6 +77,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:surname, :name, :middle_name, :address, :status)
+      params.require(:person).permit(:surname, :name, :middle_name, :index, :region, :reduce_address, :status)
     end
 end
