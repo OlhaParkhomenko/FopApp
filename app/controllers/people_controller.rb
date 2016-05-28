@@ -4,14 +4,18 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.paginate(:page => params[:page], :per_page => 15)
+    if params[:order]
+      @people = Person.order(params[:order]).paginate(:page => params[:page], :per_page => 15)
+    else  
+      @people = Person.paginate(:page => params[:page], :per_page => 15)
+    end  
   end
-
+ 
   def search
     search_terms={}
-    search_terms[:surname] = params[:surname] if params[:surname]
-    search_terms[:status] = params[:status] if params[:status]
-    search_terms[:region] = params[:region] if params[:region]
+    search_terms[:surname] = params[:surname] if params[:surname] and params[:surname]!=''
+    search_terms[:status] = params[:status] if params[:status] and params[:status]!=''
+    search_terms[:region] = params[:region] if params[:region] and params[:region]!=''
     @people = Person.where(search_terms).paginate(:page => params[:page], :per_page => 15)
   end
 
@@ -77,6 +81,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:surname, :name, :middle_name, :index, :region, :reduce_address, :status)
+      params.require(:person).permit(:surname, :name, :middle_name, :zip_code, :address, :status)
     end
 end

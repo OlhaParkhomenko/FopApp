@@ -9,15 +9,21 @@ namespace :data do
 
         id, fio, addr, cat, status = line.split(";").map {|w| w.gsub('"', '').strip}
         fio_surname, fio_name, fio_middle_name = fio.split(' ')
-        addr_index, addr_region, addr_full = addr.split(',', 3)    
+        addr_zipcode, addr_region, addr_city, addr_rest = addr.split(',', 4)
+
+        Region.find_or_create_by(region_name: addr_region)
+        City.find_or_create_by(city_name: addr_city)    
         
-        person = Person.new
+        person = Person.find_by(name: fio_name, surname: fio_surname)
+        person = Person.new unless person
+
+        person.fullname = fio
         person.surname = fio_surname
         person.name = fio_name
         person.middle_name = fio_middle_name
-        person.index = addr_index
-        person.region = addr_region
-        person.reduce_address = addr_full
+        person.raw_address = addr
+        person.zip_code = addr_zipcode
+        person.address = addr_rest
              
         cat_code, cat_name = cat.split(' ', 2)
         category = Category.find_or_create_by(code: cat_code, name: cat_name)

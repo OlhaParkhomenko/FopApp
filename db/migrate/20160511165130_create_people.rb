@@ -4,7 +4,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :fullname
       t.string :address
       t.string :status
-
       t.timestamps null: false
     end
   end

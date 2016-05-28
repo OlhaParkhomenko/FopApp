@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :cities
+  resources :regions
  resources :people do
     collection do
       get 'search'
