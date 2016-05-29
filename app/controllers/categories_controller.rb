@@ -7,10 +7,6 @@ class CategoriesController < ApplicationController
     @categories = Category.paginate(:page => params[:page], :per_page => 15)
   end
 
-  def register
-    
-  end
-
   # GET /categories/1
   # GET /categories/1.json
   def show

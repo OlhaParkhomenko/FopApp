@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :cities
   resources :regions
- resources :people do
+  resources :people do
     collection do
       get 'search'
     end
   end 
+
+  resources :category do
+    resources :people
+  end
 
   resources :categories
   root 'people#index'

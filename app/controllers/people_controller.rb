@@ -9,8 +9,16 @@ class PeopleController < ApplicationController
     else  
       @people = Person.paginate(:page => params[:page], :per_page => 15)
     end  
+
+    if params[:category_id]
+      @people = Category.find(params[:category_id]).people
+    else 
+      @people = Person.paginate(:page => params[:page], :per_page => 15)
+    end  
+
   end
- 
+
+
   def search
     search_terms={}
     search_terms[:surname] = params[:surname] if params[:surname] and params[:surname]!=''
