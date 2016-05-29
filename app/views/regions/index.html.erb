@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Region</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
   <tbody>
     <% @regions.each do |region| %>
       <tr>
+        <td><%= link_to region.region_name, region_people_path(region) %></td>
         <td><%= link_to 'Show', region %></td>
         <td><%= link_to 'Edit', edit_region_path(region) %></td>
         <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +24,3 @@
 
 <br>
 
-<%= link_to 'New Region', new_region_path %>

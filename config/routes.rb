@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :people
   end
 
+  resources :region do
+    resources :people
+  end
+
   resources :categories
   root 'people#index'
 

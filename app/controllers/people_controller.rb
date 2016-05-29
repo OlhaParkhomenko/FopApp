@@ -6,13 +6,11 @@ class PeopleController < ApplicationController
   def index
     if params[:order]
       @people = Person.order(params[:order]).paginate(:page => params[:page], :per_page => 15)
+    elsif params[:category_id]
+      @people = Category.find(params[:category_id]).people.paginate(:page => params[:page], :per_page => 15)
+    elsif params[:region_id]
+      @people = Region.find(params[:region_id]).people.paginate(:page => params[:page], :per_page => 15)
     else  
-      @people = Person.paginate(:page => params[:page], :per_page => 15)
-    end  
-
-    if params[:category_id]
-      @people = Category.find(params[:category_id]).people
-    else 
       @people = Person.paginate(:page => params[:page], :per_page => 15)
     end  
 
