@@ -5,12 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Surname</th>
+      <th><%=link_to "Surname", people_path(order: "surname")%></th>
       <th>Name</th>
       <th>Middle name</th>
       <th>Zip_code</th>
       <th>Address</th>
-      <th>Status</th>
+      <th><%=link_to "Status", people_path(order: "status")%></th>
       <th colspan="5"></th>
     </tr>
   </thead>
