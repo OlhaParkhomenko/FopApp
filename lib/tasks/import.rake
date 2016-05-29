@@ -22,9 +22,9 @@ namespace :data do
         person.zip_code = addr_zipcode
         person.address = addr_rest
         
-        #person.region = Region.find_or_create_by(region_name: addr_region)     
+        person.region = Region.find_or_create_by(region_name: addr_region)     
         cat_code, cat_name = cat.split(' ', 2)
-        person.category = Person.find_or_create_by(code: cat_code, name: cat_name)
+        person.category = Category.find_or_create_by(code: cat_code, name: cat_name)
                 
         person.status = status
         person.save
