@@ -25,7 +25,7 @@
   
 <%= yield %>
 
-
+<%= pie_chart Person.where(status: "припинено").group(:region_id).count %>
    
 </body>
 
