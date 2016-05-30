@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528065842) do
+ActiveRecord::Schema.define(version: 20160511165130) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "code"
@@ -29,14 +29,11 @@ ActiveRecord::Schema.define(version: 20160528065842) do
     t.string   "zip_code"
     t.string   "address"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.integer  "category_id"
     t.integer  "region_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
-
-  add_index "people", ["category_id"], name: "index_people_on_category_id"
-  add_index "people", ["region_id"], name: "index_people_on_region_id"
 
   create_table "regions", force: :cascade do |t|
     t.string   "region_name"

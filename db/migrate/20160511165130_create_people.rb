@@ -9,6 +9,8 @@ class CreatePeople < ActiveRecord::Migration
       t.string :zip_code
       t.string :address
       t.string :status
+      t.references :category
+      t.references :region
 
       t.timestamps null: false
     end
