@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
-<h3>Open</h3>
-<h3>Closed</h3>
+<h3>Open</h3><%=region.people.where(status: 'зареєстровано').count %>
+<h3>Closed</h3><%=region.people.where(status: 'припинено').count %>
 
 <table>
   <thead>

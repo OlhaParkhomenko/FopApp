@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   resources :regions
   resources :people do
     collection do

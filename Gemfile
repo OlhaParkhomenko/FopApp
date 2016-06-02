@@ -9,6 +9,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'devise'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

@@ -13,8 +13,13 @@ class PeopleController < ApplicationController
     else  
       @people = Person.paginate(:page => params[:page], :per_page => 15)
     end  
-
   end
+
+  #def fop_count
+  #  m={}
+  #  Person.where(status: "припинено").group(:region_id).count.each {|k,v| m[Region.find(k).region_name] = v}
+  #  return m
+  #end
 
 
   def search
